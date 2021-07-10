@@ -10,8 +10,41 @@
 </head>
 <body>
   <div class="container">
+
+    <!-- //////////////////////////////// -->
+
+    <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tebrikler 🥳 </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="form-none" id="form">
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Telefonunuza gelen şifreyi giriniz!</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button id="sendModalBtn" type="button" class="btn btn-primary">Yolla</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- //////////////////////////////// -->
+    
     <section class="left-side">
-      <h3>Para gönderilecek hesabı seçiniz</h3>
+      <h3>Gönderen hesabı seçiniz</h3>
       <div class="accordion" id="accordionExample">
         <!-- Accordion area -->
       </div>
@@ -19,9 +52,10 @@
 
     <section class="right-side">
       <form>
+        <fieldset>
         <div class="mb-3">
           <label for="inputIban" class="form-label">Iban address</label>
-          <input type="number" class="form-control" id="inputIban" aria-describedby="warning">
+          <input type="number" class="form-control" id="inputIban" aria-describedby="warning" >
           <div id="warning" class="form-text">Be sure you wrote the correct address!</div>
         </div>
         <div class="mb-3">
@@ -30,11 +64,13 @@
           <div id="warning" class="form-text">You will be able to put amount after enter a 24 character Iban address.</div>
         </div>
         <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          
+          <div id="countdown" class="form-check-label" for="exampleCheck1">120</div>
         </div>
-        <button type="submit" id="sendBtn" class="btn btn-success disabled" >Send 💸</button>
+        <button type="submit" id="sendBtn" class="btn btn-success disabled" data-bs-toggle="modal" data-bs-target="#exampleModal" >Send 💸</button>
+
         <div id="warning" class="form-text">If your balance more than typed amount, send button will be activated</div>
+      </fieldset>
       </form>
     </section>
 
