@@ -20,75 +20,44 @@ money.textContent = String(BILL_GATES_MONEY);
 moneySection.appendChild(money);
 
 const deneme = (event) => {
-  const price = parseInt(event.path[1].childNodes[2].childNodes[1].textContent);
+  const id = event.target.id;
+  const price = parseInt(document.querySelector(`#price-${id}`).textContent);
+
+  const amount = document.querySelector(`#amount-${id}`);
+  console.log(amount);
+
   money.textContent = BILL_GATES_MONEY;
-  adet = parseInt(BILL_GATES_MONEY / price);
-  event.path[1].childNodes[4].attributes[1].textContent = `Bu üründen ${adet} adet alabilirsiniz`;
+  // adet = parseInt(BILL_GATES_MONEY / price);
+  //event.path[1].childNodes[4].attributes[1].textContent = `Bu üründen ${adet} adet alabilirsiniz`;
 
   if (BILL_GATES_MONEY > 0 && BILL_GATES_MONEY - price >= 0) {
     BILL_GATES_MONEY = BILL_GATES_MONEY - price;
-    event.path[1].childNodes[3].childNodes[1].textContent =
-      parseInt(event.path[1].childNodes[3].childNodes[1].textContent) + 1;
+    amount.textContent++;
   } else {
     alert('Maalesef paranız yetmiyor.. :(');
   }
 };
 
 products.map((product) => {
-  const card = document.createElement('div');
-  card.className = 'card';
+  container.innerHTML += `<div class="card">
+                            <h3 class="title">${product.name}</h3>
+                            <div class="img-div"> 
+                              <img src=${product.img}>
+                            </div>
+                            <div class="price-section">
+                              <div>Fiyat</div>
+                              <div class="price" id="price-${product.id}">${product.price}</div>
+                            </div>
+                            <div class="piece-section">
+                              <div>Alınan adet</div>
+                              <div class="amount" id="amount-${product.id}">${alinanAdet}</div>
+                            </div>
+                            <button class="btn" id=${product.id}>Satın Al</button>
+                          </div>`;
 
-  const title = document.createElement('h3');
-  title.className = 'title';
-  title.textContent = product.name;
-
-  const imgDiv = document.createElement('div');
-  imgDiv.className = 'img-div';
-
-  const img = document.createElement('img');
-  img.src = product.img;
-
-  const priceSection = document.createElement('div');
-  priceSection.className = 'price-section';
-
-  const priceTitle = document.createElement('div');
-  priceTitle.textContent = 'Fiyat';
-
-  const price = document.createElement('div');
-  price.className = 'price';
-  price.textContent = product.price;
-
-  priceSection.appendChild(priceTitle);
-  priceSection.appendChild(price);
-
-  const pieceSection = document.createElement('div');
-  pieceSection.className = 'piece-section';
-
-  const pieceTitle = document.createElement('div');
-  pieceTitle.textContent = 'Alınan adet';
-
-  const piece = document.createElement('div');
-  piece.className = 'amount';
-  piece.textContent = parseInt(alinanAdet);
-
-  pieceSection.appendChild(pieceTitle);
-  pieceSection.appendChild(piece);
-
-  const btn = document.createElement('button');
-  btn.textContent = 'Satın Al';
-  btn.className = 'btn';
-  btn.addEventListener('click', deneme);
-  btn.title = `Bu üründen ${
-    BILL_GATES_MONEY / product.price
-  } adet alabilirsiniz`;
-
-  container.appendChild(card);
-  card.append(title);
-  card.appendChild(imgDiv);
-  imgDiv.appendChild(img);
-  card.appendChild(priceSection);
-  card.appendChild(pieceSection);
-  card.appendChild(btn);
+  document.querySelectorAll('.btn').forEach((item) => {
+    item.addEventListener('click', deneme);
+  });
 });
 
 document.body.appendChild(moneySection);
