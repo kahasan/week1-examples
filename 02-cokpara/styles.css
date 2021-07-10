@@ -53,3 +53,20 @@ img {
   color: white;
   cursor: pointer;
 }
+
+.action {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+}
+
+.purchasable {
+  display: none;
+  width: 100px;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.btn:hover + .purchasable {
+  display: block;
+}
