@@ -26,13 +26,15 @@
         </div>
         <div class="mb-3">
           <label for="inputAmount" class="form-label">Amount</label>
-          <input type="number" class="form-control" id="inputAmount">
+          <input type="number" class="form-control" id="inputAmount" disabled>
+          <div id="warning" class="form-text">You will be able to put amount after enter a 24 character Iban address.</div>
         </div>
         <div class="mb-3 form-check">
           <input type="checkbox" class="form-check-input" id="exampleCheck1">
           <label class="form-check-label" for="exampleCheck1">Check me out</label>
         </div>
-        <button type="submit" class="btn btn-success">Send 💸</button>
+        <button type="submit" id="sendBtn" class="btn btn-success disabled" >Send 💸</button>
+        <div id="warning" class="form-text">If your balance more than typed amount, send button will be activated</div>
       </form>
     </section>
 
